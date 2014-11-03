@@ -1,5 +1,6 @@
 package net.pushq.soccero;
 
+import net.pushq.soccero.data.Provider;
 import net.pushq.soccero.pages.HomePage;
 import net.pushq.soccero.pages.LoginPage;
 import net.pushq.soccero.framework.Pages;
@@ -7,13 +8,8 @@ import org.apache.commons.io.IOUtils;
 import spark.servlet.SparkApplication;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import static org.apache.commons.io.FileUtils.isFileNewer;
-import static org.apache.commons.io.FileUtils.readFileToString;
 import static spark.Spark.*;
 
-/**
- * Created by Michal on 2014-10-09.
- */
 public class MainApplication implements SparkApplication {
     public final static VelocityTemplateEngine FTL = new VelocityTemplateEngine();
     public final static Pages PAGES = new Pages();

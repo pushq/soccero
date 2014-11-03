@@ -1,4 +1,4 @@
-package net.pushq.soccero;
+package net.pushq.soccero.data;
 
 import net.pushq.soccero.domain.Game;
 import net.pushq.soccero.domain.Player;
@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 
 import static net.pushq.soccero.convert.Mapper.mapToObject;
 
-/**
- * Created by Michal on 2014-10-10.
- */
 public class Provider {
 
     private final JdbcTemplate jdbcTemplate;
@@ -32,45 +29,37 @@ public class Provider {
     public List<Player> players() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from player");
 
-        List<Player> returnList = maps.
+        return maps.
                 stream().
                 map(map -> mapToObject(map, new Player())).
                 collect(Collectors.toList());
-
-        return returnList;
     }
 
     public List<Game> games() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_view");
 
-        List<Game> returnList = maps.
+        return maps.
                 stream().
                 map(map -> mapToObject(map, new Game())).
                 collect(Collectors.toList());
-
-        return returnList;
     }
 
     public List<Game> activeGames() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_active_view");
 
-        List<Game> returnList = maps.
+        return maps.
                 stream().
                 map(map -> mapToObject(map, new Game())).
                 collect(Collectors.toList());
-
-        return returnList;
     }
 
     public List<StatsRecord> winStats() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from win_stats_view");
 
-        List<StatsRecord> returnList = maps.
+        return maps.
                 stream().
                 map(map -> mapToObject(map, new StatsRecord())).
                 collect(Collectors.toList());
-
-        return returnList;
     }
 
     public void register(Register register) {

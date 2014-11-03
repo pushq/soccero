@@ -1,0 +1,39 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<form action="/register" method="post">
+    Player 1 Team Red:
+    <select name="playerR1">
+        #foreach( $p in $players )
+           <option value="$p.id">$p.name</option>
+        #end
+    </select>
+
+    Player 2 Team Red:
+    <select name="playerR2">
+        #foreach( $p in $players )
+            <option value="$p.id">$p.name</option>
+        #end
+    </select>
+    <br/>
+    Player 1 Team Blue:
+    <select name="playerB1">
+        #foreach( $p in $players )
+            <option value="$p.id">$p.name</option>
+        #end
+    </select>
+
+    Player 2 Team Blue:
+    <select name="playerB2">
+        #foreach( $p in $players )
+           <option value="$p.id">$p.name</option>
+        #end
+    </select>
+    <br/>
+    Red vs. Blue: <input type="text" name="redScore"> : <input type="text" name="blueScore"> <br>
+    <input type="submit" value="submit"/>
+</form>
+</body>
+</html>

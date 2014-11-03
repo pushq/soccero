@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td>Player</td>
+        <td>Wins</td>
+        <td>Losses</td>
+        <td>Sum</td>
+        <td>Ratio</td>
+    </tr>
+    #foreach( $s in $stats )
+    <tr>
+        <td>$s.name</td>
+        <td>$s.wins</td>
+        <td>$s.losses</td>
+        <td>$s.sum</td>
+        <td>$s.ratio</td>
+    </tr>
+    #end
+    </tbody>
+</table>
+</body>
+</html>

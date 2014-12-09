@@ -1,11 +1,15 @@
 package net.pushq.soccero.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Michal on 2014-10-12.
  */
 public class Game {
+
+    final static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
     String playerR1;
     String playerR2;
     String playerB1;
@@ -82,6 +86,10 @@ public class Game {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDateString() {
+        return format.format(date);
     }
 
     @Override

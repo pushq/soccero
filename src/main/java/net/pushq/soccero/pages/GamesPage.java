@@ -17,7 +17,7 @@ public class GamesPage extends AbstractPage{
 
     @Override
     protected void handleGet(Request req, Response res, Map<String, Object> attributes) {
-        attributes.put("games", MainApplication.PROVIDER.games());
+        attributes.put("games", MainApplication.PROVIDER.activeGames());
     }
 
     @Override

@@ -1,39 +1,60 @@
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-<form action="/register" method="post">
-    Player 1 Team Red:
-    <select name="playerR1">
-        #foreach( $p in $players )
-           <option value="$p.id">$p.name</option>
-        #end
-    </select>
-
-    Player 2 Team Red:
-    <select name="playerR2">
-        #foreach( $p in $players )
-            <option value="$p.id">$p.name</option>
-        #end
-    </select>
-    <br/>
-    Player 1 Team Blue:
-    <select name="playerB1">
-        #foreach( $p in $players )
-            <option value="$p.id">$p.name</option>
-        #end
-    </select>
-
-    Player 2 Team Blue:
-    <select name="playerB2">
-        #foreach( $p in $players )
-           <option value="$p.id">$p.name</option>
-        #end
-    </select>
-    <br/>
-    Red vs. Blue: <input type="text" name="redScore"> : <input type="text" name="blueScore"> <br>
-    <input type="submit" value="submit"/>
-</form>
-</body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <form action="/register" method="post" style="text-align: center; width: 140px;">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Red</th>
+                        <th>Blue</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="playerR1">
+                                #foreach( $p in $players )
+                                <option value="$p.id">$p.name</option>
+                                #end
+                            </select>
+                        </td>
+                        <td>
+                            <select name="playerB1">
+                                #foreach( $p in $players )
+                                <option value="$p.id">$p.name</option>
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="playerR2">
+                                #foreach( $p in $players )
+                                <option value="$p.id">$p.name</option>
+                                #end
+                            </select>
+                        </td>
+                        <td>
+                            <select name="playerB2">
+                                #foreach( $p in $players )
+                                <option value="$p.id">$p.name</option>
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td style="text-align: right;">
+                            <input type="text" name="redScore" size="2" style="text-align: right;">
+                        </td>
+                        <td>
+                            :<input type="text" name="blueScore" size="2">
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <input type="submit" value="submit">
+        </form>
+    </body>
 </html>

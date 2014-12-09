@@ -27,7 +27,7 @@ public class Provider {
     }
 
     public List<Player> players() {
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from player");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from player_view");
 
         return maps.
                 stream().

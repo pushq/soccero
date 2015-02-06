@@ -16,6 +16,8 @@ public class StatsRecord {
     Integer sum;
 
     BigDecimal ratio;
+    private BigDecimal avg;
+    private BigDecimal mod;
 
     public String getName() {
         return name;
@@ -55,5 +57,21 @@ public class StatsRecord {
 
     public void setRatio(BigDecimal ratio) {
         this.ratio = ratio;
+    }
+
+    public void setAvg(BigDecimal avg) {
+        this.avg = avg;
+    }
+
+    public BigDecimal getAvg() {
+        return avg;
+    }
+
+    public void setMod(BigDecimal mod) {
+        this.mod = mod;
+    }
+
+    public BigDecimal getMod() {
+        return mod;
     }
 }

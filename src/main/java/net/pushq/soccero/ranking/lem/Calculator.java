@@ -48,6 +48,8 @@ public class Calculator {
             StatsRecord statsRecord = new StatsRecord();
             statsRecord.setName(player);
             statsRecord.setRatio(new BigDecimal(solution.getEntry(axis.indexOf(player))).setScale(2, BigDecimal.ROUND_UP));
+            statsRecord.setAvg(new BigDecimal(scoreMap.get(player).getAvg()).setScale(2, BigDecimal.ROUND_UP));
+            statsRecord.setMod(statsRecord.getRatio().subtract(statsRecord.getAvg()));
             return statsRecord;
         }).collect(Collectors.toList());
 

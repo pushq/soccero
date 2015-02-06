@@ -8,11 +8,17 @@
     <tr>
         <td>Player</td>
         <td>Ratio</td>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td style="color: white;">Avg</td>
+        <td style="color: white;">Mod</td>
     </tr>
     #foreach( $s in $stats )
     <tr>
         <td>$s.name</td>
         <td>$s.ratio</td>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td style="color: white;">($s.avg</td>
+        <td style="color: white;">$s.mod)</td>
     </tr>
     #end
     </tbody>

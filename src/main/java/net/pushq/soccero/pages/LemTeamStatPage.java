@@ -15,14 +15,14 @@ import java.util.Map;
 /**
  * Created by Michal on 2014-10-17.
  */
-public class LemStatPage extends AbstractPage {
-    public static final String LOCATOR = "/lemstat";
+public class LemTeamStatPage extends AbstractPage {
+    public static final String LOCATOR = "/lemstatteam";
     public static final String HTML = "lemstat.ftl.html";
 
     @Override
     protected void handleGet(Request req, Response res, Map<String, Object> attributes) {
         List<Game> games = MainApplication.PROVIDER.activeGames();
-        Calculator calculator = new Calculator(games);
+        TeamCalculator calculator = new TeamCalculator(games);
         List<StatsRecord> stats = calculator.calculate();
         attributes.put("stats", stats);
     }

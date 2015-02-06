@@ -20,6 +20,7 @@ public class Pages {
         pages.add(new GamesPage());
         pages.add(new WinStatPage());
         pages.add(new LemStatPage());
+        pages.add(new LemTeamStatPage());
 
         pages.forEach(p -> p.register());
     }

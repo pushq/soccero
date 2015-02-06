@@ -15,7 +15,7 @@ public class Calculator {
 
     public static final int VICTORY_RATIO = 1;
 
-    private static class SinglePlayerScore {
+    protected static class SinglePlayerScore {
         public double scoreSum = 0;
         public int plays = 0;
 
@@ -24,7 +24,7 @@ public class Calculator {
         }
     }
 
-    private final List<Game> games;
+    protected final List<Game> games;
 
     public Calculator(List<Game> games) {
         this.games = games;
@@ -58,7 +58,7 @@ public class Calculator {
         return results;
     }
 
-    private void adjustCoefficients(List<String> axis, Map<String, SinglePlayerScore> scoreMap, RealMatrix coefficients) {
+    protected void adjustCoefficients(List<String> axis, Map<String, SinglePlayerScore> scoreMap, RealMatrix coefficients) {
         scoreMap.forEach((player, score) -> {
             RealVector rowVector = coefficients.getRowVector(axis.indexOf(player));
             rowVector = rowVector.mapMultiply(1.0 / (score.plays * 3));
@@ -70,7 +70,7 @@ public class Calculator {
         }
     }
 
-    private RealVector prepareAverageScoreVector(List<String> axis, Map<String, SinglePlayerScore> scoreMap) {
+    protected RealVector prepareAverageScoreVector(List<String> axis, Map<String, SinglePlayerScore> scoreMap) {
         RealVector scoreConstant = new ArrayRealVector(axis.size());
 
         scoreMap.forEach((player, score) -> {
@@ -79,7 +79,7 @@ public class Calculator {
         return scoreConstant;
     }
 
-    private RealMatrix prepareCoefficientsMatrix(List<Game> games, List<String> axis) {
+    protected RealMatrix prepareCoefficientsMatrix(List<Game> games, List<String> axis) {
         RealMatrix coefficients = new Array2DRowRealMatrix(axis.size(), axis.size());
 
         games.forEach( g -> {
@@ -91,7 +91,7 @@ public class Calculator {
         return coefficients;
     }
 
-    private Map<String, SinglePlayerScore> prepareScoreRatioMap(List<Game> games, List<String> axis) {
+    protected Map<String, SinglePlayerScore> prepareScoreRatioMap(List<Game> games, List<String> axis) {
         Map<String, SinglePlayerScore> scoreMap = new HashMap<>();
         axis.forEach(s -> scoreMap.put(s, new SinglePlayerScore()));
         games.forEach( g -> {
@@ -100,7 +100,7 @@ public class Calculator {
         return scoreMap;
     }
 
-    private List<String> preparePlayerAxis(List<Game> games) {
+    protected List<String> preparePlayerAxis(List<Game> games) {
         Set<String> preAxis = new HashSet<String>();
 
         games.forEach( g -> {
@@ -115,15 +115,15 @@ public class Calculator {
         return axis;
     }
 
-    private void adjustCoefficients(List<String> axis, RealMatrix coefficients, String player, String mate, String opponent1, String opponent2, Integer playerScore, Integer opponentScore) {
+    protected void adjustCoefficients(List<String> axis, RealMatrix coefficients, String player, String mate, String opponent1, String opponent2, Integer playerScore, Integer opponentScore) {
         coefficients.addToEntry(axis.indexOf(player), axis.indexOf(mate), -1);
         coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent1), 1);
         coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent2), 1);
     }
 
-    private void sumScore(Map<String, SinglePlayerScore> scoreMap, Game g) {
-        Integer blueScore = g.getBlueScore() == 10 ? 10 + VICTORY_RATIO : g.getBlueScore();
-        Integer redScore = g.getRedScore() == 10 ? 10 + VICTORY_RATIO : g.getRedScore();
+    protected void sumScore(Map<String, SinglePlayerScore> scoreMap, Game g) {
+        Integer blueScore = g.getBlueScore() == 10 ? 10 + getVictoryRatio() : g.getBlueScore();
+        Integer redScore = g.getRedScore() == 10 ? 10 + getVictoryRatio() : g.getRedScore();
 
         scoreMap.get(g.getPlayerB1()).plays++;
         scoreMap.get(g.getPlayerB1()).scoreSum += blueScore - redScore;
@@ -136,5 +136,9 @@ public class Calculator {
 
         scoreMap.get(g.getPlayerR2()).plays++;
         scoreMap.get(g.getPlayerR2()).scoreSum += redScore - blueScore;
+    }
+
+    protected int getVictoryRatio() {
+        return VICTORY_RATIO;
     }
 }

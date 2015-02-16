@@ -66,7 +66,7 @@ public class TeamCalculator extends Calculator {
 
 
     private void adjustCoefficients(List<String> axis, RealMatrix coefficients, String team, String opponent) {
-        coefficients.addToEntry(axis.indexOf(team), axis.indexOf(opponent), 1);
+        coefficients.addToEntry(axis.indexOf(team), axis.indexOf(opponent), -1);
     }
 
     private String getTeamName(String p1, String p2) {

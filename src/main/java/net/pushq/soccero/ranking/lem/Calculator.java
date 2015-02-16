@@ -116,9 +116,9 @@ public class Calculator {
     }
 
     protected void adjustCoefficients(List<String> axis, RealMatrix coefficients, String player, String mate, String opponent1, String opponent2, Integer playerScore, Integer opponentScore) {
-        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(mate), -1);
-        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent1), 1);
-        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent2), 1);
+        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(mate), 1);
+        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent1), -1);
+        coefficients.addToEntry(axis.indexOf(player), axis.indexOf(opponent2), -1);
     }
 
     protected void sumScore(Map<String, SinglePlayerScore> scoreMap, Game g) {

@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.13
 -- Dumped by pg_dump version 9.3.1
--- Started on 2014-12-09 22:08:39
+-- Started on 2015-02-23 18:01:39
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -145,7 +145,7 @@ ALTER TABLE public.lose_view OWNER TO postgres;
 --
 
 CREATE VIEW player_view AS
-SELECT player.id, player.name, player.active FROM player ORDER BY player.name;
+SELECT player.id, player.name, player.active FROM player WHERE (player.active = true) ORDER BY player.name;
 
 
 ALTER TABLE public.player_view OWNER TO postgres;
@@ -321,7 +321,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2014-12-09 22:08:41
+-- Completed on 2015-02-23 18:01:41
 
 --
 -- PostgreSQL database dump complete

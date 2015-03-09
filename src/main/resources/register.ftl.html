@@ -1,60 +1,98 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form action="/register" method="post" style="text-align: center; width: 140px;">
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Red</th>
-                        <th>Blue</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select name="playerR1">
-                                #foreach( $p in $players )
-                                <option value="$p.id">$p.name</option>
-                                #end
-                            </select>
-                        </td>
-                        <td>
-                            <select name="playerB1">
-                                #foreach( $p in $players )
-                                <option value="$p.id">$p.name</option>
-                                #end
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select name="playerR2">
-                                #foreach( $p in $players )
-                                <option value="$p.id">$p.name</option>
-                                #end
-                            </select>
-                        </td>
-                        <td>
-                            <select name="playerB2">
-                                #foreach( $p in $players )
-                                <option value="$p.id">$p.name</option>
-                                #end
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td style="text-align: right;">
-                            <input type="text" name="redScore" size="2" style="text-align: right;">
-                        </td>
-                        <td>
-                            :<input type="text" name="blueScore" size="2">
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-            <input type="submit" value="submit">
-        </form>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/home">Home</a>
+                            </li>
+                            <li>
+                                <a href="/register">Register Play</a>
+                            </li>
+                            <li>
+                                <a href="/games">Games</a>
+                            </li>
+                            <li>
+                                <a href="/winstats">Win Ranking</a>
+                            </li>
+                            <li>
+                                <a href="/lemstat">LEM Ranking</a>
+                            </li>
+                            <li>
+                                <a href="/lemstatteam">LEM Team Ranking</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="jumbotron">
+                <form action="/register" method="post" style="text-align: center; width: 140px;">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Red</th>
+                            <th>Blue</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="playerR1">
+                                    #foreach( $p in $players )
+                                    <option value="$p.id">$p.name</option>
+                                    #end
+                                </select>
+                            </td>
+                            <td>
+                                <select name="playerB1">
+                                    #foreach( $p in $players )
+                                    <option value="$p.id">$p.name</option>
+                                    #end
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="playerR2">
+                                    #foreach( $p in $players )
+                                    <option value="$p.id">$p.name</option>
+                                    #end
+                                </select>
+                            </td>
+                            <td>
+                                <select name="playerB2">
+                                    #foreach( $p in $players )
+                                    <option value="$p.id">$p.name</option>
+                                    #end
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td style="text-align: right;">
+                                <input type="text" name="redScore" size="2" style="text-align: right;">
+                            </td>
+                            <td>
+                                :<input type="text" name="blueScore" size="2">
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+
     </body>
 </html>

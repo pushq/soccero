@@ -1,30 +1,67 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table>
-    <tbody>
-    <tr>
-        <td colspan="2">Red Team</td>
-        <td>vs.</td>
-        <td colspan="2" >Blue Team</td>
-    </tr>
-    #foreach( $g in $games )
-    <tr>
-        <td>$g.playerR1</td>
-        <td>$g.playerR2</td>
-        <td>vs.</td>
-        <td>$g.playerB1</td>
-        <td>$g.playerB2</td>
-        <td>$g.redScore</td>
-        <td>:</td>
-        <td>$g.blueScore</td>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>$g.dateString</td>
-    </tr>
-    #end
-    </tbody>
-</table>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/home">Home</a>
+                    </li>
+                    <li>
+                        <a href="/register">Register Play</a>
+                    </li>
+                    <li>
+                        <a href="/games">Games</a>
+                    </li>
+                    <li>
+                        <a href="/winstats">Win Ranking</a>
+                    </li>
+                    <li>
+                        <a href="/lemstat">LEM Ranking</a>
+                    </li>
+                    <li>
+                        <a href="/lemstatteam">LEM Team Ranking</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron">
+        <table>
+            <tbody>
+            <tr>
+                <td colspan="2">Red Team</td>
+                <td>vs.</td>
+                <td colspan="2" >Blue Team</td>
+            </tr>
+            #foreach( $g in $games )
+            <tr>
+                <td>$g.playerR1</td>
+                <td>$g.playerR2</td>
+                <td>vs.</td>
+                <td>$g.playerB1</td>
+                <td>$g.playerB2</td>
+                <td>$g.redScore</td>
+                <td>:</td>
+                <td>$g.blueScore</td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td>$g.dateString</td>
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

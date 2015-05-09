@@ -2,6 +2,7 @@
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -38,22 +39,22 @@
         </div>
     </nav>
     <div class="jumbotron">
-        <table>
+        <table class="table table-bordered">
             <tbody>
             <tr>
                 <td>Player</td>
-                <td>Ratio</td>
+                <td>Sore</td>
                 <td>&nbsp;&nbsp;&nbsp;</td>
-                <td style="color: white;">Avg</td>
-                <td style="color: white;">Mod</td>
+                <td>Avg</td>
+                <td>Mod</td>
             </tr>
             #foreach( $s in $stats )
             <tr>
                 <td>$s.name</td>
                 <td>$s.ratio</td>
                 <td>&nbsp;&nbsp;&nbsp;</td>
-                <td style="color: white;">($s.avg</td>
-                <td style="color: white;">$s.mod)</td>
+                <td>$s.avg</td>
+                <td>$s.mod</td>
             </tr>
             #end
             </tbody>

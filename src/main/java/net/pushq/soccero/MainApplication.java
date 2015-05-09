@@ -26,6 +26,10 @@ public class MainApplication implements SparkApplication {
                 res.body(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("public/style.css")));
                 return;
             }
+            if (requestURI.equals("/combobox.js")) {
+                res.body(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("public/combobox.js")));
+                return;
+            }
 
             if (req.session(true).attribute("auth") == null) {
                 if (!requestURI.equals(LoginPage.LOCATOR)) {

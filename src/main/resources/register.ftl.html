@@ -2,9 +2,13 @@
     <head>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="/style.css">
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="/combobox.js"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -38,23 +42,25 @@
                 </div>
             </nav>
             <div class="jumbotron">
-                <form action="/register" method="post" style="text-align: center; width: 140px;">
-                    <table>
+                <form action="/register" method="post" style="text-align: center; width: 200px;">
+                    <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <th>Red</th>
-                            <th>Blue</th>
+                            <th>Team R</th>
+                            <th>Team B</th>
                         </tr>
                         <tr>
                             <td>
-                                <select name="playerR1">
+                                <select name="playerR1" class="combobox">
+                                    <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
                                     <option value="$p.id">$p.name</option>
                                     #end
                                 </select>
                             </td>
                             <td>
-                                <select name="playerB1">
+                                <select name="playerB1" class="combobox">
+                                    <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
                                     <option value="$p.id">$p.name</option>
                                     #end
@@ -63,14 +69,16 @@
                         </tr>
                         <tr>
                             <td>
-                                <select name="playerR2">
+                                <select name="playerR2" class="combobox">
+                                    <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
                                     <option value="$p.id">$p.name</option>
                                     #end
                                 </select>
                             </td>
                             <td>
-                                <select name="playerB2">
+                                <select name="playerB2" class="combobox">
+                                    <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
                                     <option value="$p.id">$p.name</option>
                                     #end
@@ -84,7 +92,7 @@
                                 <input type="text" name="redScore" size="2" style="text-align: right;">
                             </td>
                             <td>
-                                :<input type="text" name="blueScore" size="2">
+                                <input type="text" name="blueScore" size="2">
                             </td>
                         </tr>
                         </tfoot>

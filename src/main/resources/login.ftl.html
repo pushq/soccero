@@ -2,6 +2,7 @@
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -13,9 +14,11 @@
 <div class="container">
     <div class="jumbotron">
         <form action="/login" method="post">
-            My code is: <input type="password" name="pass">
+            <div class="form-group">
+                My code is: <input type="password" name="pass">
+            </div>
             <br/>
-            <input type="submit" value="login"/>
+            <input type="submit" class="btn btn-default" value="login"/>
         </form>
     </div>
 </div>

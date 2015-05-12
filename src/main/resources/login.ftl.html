@@ -12,12 +12,14 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-default">
+    </nav>
     <div class="jumbotron">
         <form action="/login" method="post">
             <div class="form-group">
-                My code is: <input type="password" name="pass">
+                <label for="pass">My code is:</label>
+                <input type="password" class="form-control" id="pass" name="pass">
             </div>
-            <br/>
             <input type="submit" class="btn btn-default" value="login"/>
         </form>
     </div>

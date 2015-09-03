@@ -38,15 +38,25 @@ public class Provider {
     public List<Game> games() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_view");
 
-        return maps.
-                stream().
-                map(map -> mapToObject(map, new Game())).
-                collect(Collectors.toList());
+        return map(maps);
     }
 
     public List<Game> activeGames() {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_active_view");
+        return map(maps);
+    }
 
+    public List<Game> currentMonthGames() {
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_current_month");
+        return map(maps);
+    }
+
+    public List<Game> lastMonthGames() {
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from games_previous_month");
+        return map(maps);
+    }
+
+    private List<Game> map(List<Map<String, Object>> maps) {
         return maps.
                 stream().
                 map(map -> mapToObject(map, new Game())).

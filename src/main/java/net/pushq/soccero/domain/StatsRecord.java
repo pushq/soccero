@@ -19,6 +19,8 @@ public class StatsRecord {
     private BigDecimal avg;
     private BigDecimal mod;
 
+    String ligue;
+
     public String getName() {
         return name;
     }
@@ -73,5 +75,13 @@ public class StatsRecord {
 
     public BigDecimal getMod() {
         return mod;
+    }
+
+    public void setLigue(String ligue) {
+        this.ligue = ligue;
+    }
+
+    public String getLigue() {
+        return ligue;
     }
 }

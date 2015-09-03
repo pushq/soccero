@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.13
 -- Dumped by pg_dump version 9.3.1
--- Started on 2015-02-23 18:01:39
+-- Started on 2015-09-03 20:43:43
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 173 (class 3079 OID 11645)
+-- TOC entry 175 (class 3079 OID 11645)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -22,8 +22,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1926 (class 0 OID 0)
--- Dependencies: 173
+-- TOC entry 1936 (class 0 OID 0)
+-- Dependencies: 175
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -73,7 +73,7 @@ CREATE SEQUENCE game_id_seq
 ALTER TABLE public.game_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1927 (class 0 OID 0)
+-- TOC entry 1937 (class 0 OID 0)
 -- Dependencies: 163
 -- Name: game_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -105,6 +105,28 @@ SELECT game."redScore", game."blueScore", game.date, r1.name AS "playerR1", r2.n
 
 
 ALTER TABLE public.games_active_view OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 24576)
+-- Name: games_current_month; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW games_current_month AS
+SELECT game."redScore", game."blueScore", game.date, r1.name AS "playerR1", r2.name AS "playerR2", b1.name AS "playerB1", b2.name AS "playerB2" FROM game, player r1, player r2, player b1, player b2 WHERE (((((((((game.red1 = r1.id) AND (game.red2 = r2.id)) AND (game.blue1 = b1.id)) AND (game.blue2 = b2.id)) AND (r1.active = true)) AND (r2.active = true)) AND (b1.active = true)) AND (b2.active = true)) AND (date_trunc('month'::text, (game.date)::timestamp with time zone) = date_trunc('month'::text, (('now'::text)::date)::timestamp with time zone))) ORDER BY game.id;
+
+
+ALTER TABLE public.games_current_month OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 24581)
+-- Name: games_previous_month; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW games_previous_month AS
+SELECT game."redScore", game."blueScore", game.date, r1.name AS "playerR1", r2.name AS "playerR2", b1.name AS "playerB1", b2.name AS "playerB2" FROM game, player r1, player r2, player b1, player b2 WHERE (((((((((game.red1 = r1.id) AND (game.red2 = r2.id)) AND (game.blue1 = b1.id)) AND (game.blue2 = b2.id)) AND (r1.active = true)) AND (r2.active = true)) AND (b1.active = true)) AND (b2.active = true)) AND (date_trunc('month'::text, (game.date)::timestamp with time zone) = date_trunc('month'::text, ((((('now'::text)::date - '1 mon'::interval))::text)::date)::timestamp with time zone))) ORDER BY game.id;
+
+
+ALTER TABLE public.games_previous_month OWNER TO postgres;
 
 --
 -- TOC entry 169 (class 1259 OID 16461)
@@ -166,7 +188,7 @@ CREATE SEQUENCE players_id_seq
 ALTER TABLE public.players_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1928 (class 0 OID 0)
+-- TOC entry 1938 (class 0 OID 0)
 -- Dependencies: 162
 -- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -208,7 +230,7 @@ SELECT player.name, COALESCE(win_view.count, (0)::bigint) AS wins, COALESCE(lose
 ALTER TABLE public.win_stats_view OWNER TO postgres;
 
 --
--- TOC entry 1791 (class 2604 OID 16410)
+-- TOC entry 1799 (class 2604 OID 16410)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -216,7 +238,7 @@ ALTER TABLE ONLY game ALTER COLUMN id SET DEFAULT nextval('game_id_seq'::regclas
 
 
 --
--- TOC entry 1790 (class 2604 OID 16390)
+-- TOC entry 1798 (class 2604 OID 16390)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -224,7 +246,7 @@ ALTER TABLE ONLY player ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::re
 
 
 --
--- TOC entry 1801 (class 2606 OID 16412)
+-- TOC entry 1809 (class 2606 OID 16412)
 -- Name: game_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -233,7 +255,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1795 (class 2606 OID 16398)
+-- TOC entry 1803 (class 2606 OID 16398)
 -- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -242,7 +264,7 @@ ALTER TABLE ONLY player
 
 
 --
--- TOC entry 1796 (class 1259 OID 16430)
+-- TOC entry 1804 (class 1259 OID 16430)
 -- Name: fki_IDX_B1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -250,7 +272,7 @@ CREATE INDEX "fki_IDX_B1" ON game USING btree (blue1);
 
 
 --
--- TOC entry 1797 (class 1259 OID 16436)
+-- TOC entry 1805 (class 1259 OID 16436)
 -- Name: fki_IDX_B2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -258,7 +280,7 @@ CREATE INDEX "fki_IDX_B2" ON game USING btree (blue2);
 
 
 --
--- TOC entry 1798 (class 1259 OID 16418)
+-- TOC entry 1806 (class 1259 OID 16418)
 -- Name: fki_IDX_R1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -266,7 +288,7 @@ CREATE INDEX "fki_IDX_R1" ON game USING btree (red1);
 
 
 --
--- TOC entry 1799 (class 1259 OID 16424)
+-- TOC entry 1807 (class 1259 OID 16424)
 -- Name: fki_IDX_R2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -274,7 +296,7 @@ CREATE INDEX "fki_IDX_R2" ON game USING btree (red2);
 
 
 --
--- TOC entry 1804 (class 2606 OID 16425)
+-- TOC entry 1812 (class 2606 OID 16425)
 -- Name: IDX_B1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -283,7 +305,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1805 (class 2606 OID 16431)
+-- TOC entry 1813 (class 2606 OID 16431)
 -- Name: IDX_B2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -292,7 +314,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1802 (class 2606 OID 16413)
+-- TOC entry 1810 (class 2606 OID 16413)
 -- Name: IDX_R1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -301,7 +323,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1803 (class 2606 OID 16419)
+-- TOC entry 1811 (class 2606 OID 16419)
 -- Name: IDX_R2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -310,7 +332,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1925 (class 0 OID 0)
+-- TOC entry 1935 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -321,7 +343,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2015-02-23 18:01:41
+-- Completed on 2015-09-03 20:43:45
 
 --
 -- PostgreSQL database dump complete

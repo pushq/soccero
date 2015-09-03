@@ -21,6 +21,8 @@ public class Pages {
         pages.add(new WinStatPage());
         pages.add(new LemStatPage());
         pages.add(new LemTeamStatPage());
+        pages.add(new LemStatPageCurrent());
+        pages.add(new LemStatPageLast());
 
         pages.forEach(p -> p.register());
     }

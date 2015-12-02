@@ -23,6 +23,7 @@ public class Pages {
         pages.add(new LemTeamStatPage());
         pages.add(new LemStatPageCurrent());
         pages.add(new LemStatPageLast());
+        pages.add(new MatcherPage());
 
         pages.forEach(p -> p.register());
     }

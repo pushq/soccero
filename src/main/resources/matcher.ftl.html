@@ -51,22 +51,19 @@
         <table class="table table-bordered">
             <tbody>
             <tr>
-                <td colspan="2">Red Team</td>
-                <td>vs.</td>
-                <td colspan="2" >Blue Team</td>
+                <td>Team A</td>
+                <td>Team A</td>
+                <td>Team B</td>
+                <td>Team B</td>
+                <td>Match</td>
             </tr>
-            #foreach( $g in $games )
+            #foreach( $m in $matches )
             <tr>
-                <td>$g.playerR1</td>
-                <td>$g.playerR2</td>
-                <td>vs.</td>
-                <td>$g.playerB1</td>
-                <td>$g.playerB2</td>
-                <td>$g.redScore</td>
-                <td>:</td>
-                <td>$g.blueScore</td>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>$g.dateString</td>
+                <td>$m.teamA1</td>
+                <td>$m.teamA2</td>
+                <td>$m.teamB1</td>
+                <td>$m.teamB2</td>
+                <td>$m.matchScore%</td>
             </tr>
             #end
             </tbody>

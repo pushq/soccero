@@ -18,7 +18,7 @@ public class Provider {
 
     public Provider() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        dataSource.setServerName("192.168.2.50");
+        dataSource.setServerName("192.168.1.50");
         dataSource.setDatabaseName("soccero");
         dataSource.setUser("postgres");
         dataSource.setPassword("");

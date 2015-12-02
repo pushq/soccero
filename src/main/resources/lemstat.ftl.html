@@ -40,6 +40,9 @@
                     <li>
                         <a href="/lemstatteam">LEM Team</a>
                     </li>
+                    <li>
+                        <a href="/matcher">Find Team</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,18 +54,18 @@
                 <td>Player</td>
                 <td>Score</td>
                 <td>Ligue</td>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>Avg</td>
-                <td>Mod</td>
+                <!--<td>&nbsp;&nbsp;&nbsp;</td>-->
+                <!--<td>Avg</td>-->
+                <!--<td>Mod</td>-->
             </tr>
             #foreach( $s in $stats )
             <tr>
                 <td>$s.name</td>
                 <td>$s.ratio</td>
                 <td>$s.ligue</td>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>$s.avg</td>
-                <td>$s.mod</td>
+                <!--<td>&nbsp;&nbsp;&nbsp;</td>-->
+                <!--<td>$s.avg</td>-->
+                <!--<td>$s.mod</td>-->
             </tr>
             #end
             </tbody>

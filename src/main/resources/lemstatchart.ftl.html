@@ -56,30 +56,7 @@
         </div>
     </nav>
     <div class="jumbotron">
-        <table class="table table-bordered">
-            <tbody>
-            <tr>
-                <td>Player</td>
-                <td>Score</td>
-                <td>Ligue</td>
-                <!--<td>&nbsp;&nbsp;&nbsp;</td>-->
-                <!--<td>Avg</td>-->
-                <!--<td>Mod</td>-->
-            </tr>
-            #foreach( $s in $stats )
-            <tr>
-                <td>$s.name</td>
-                <td>$s.ratio</td>
-                <td>$s.ligue</td>
-                <!--<td>&nbsp;&nbsp;&nbsp;</td>-->
-                <!--<td>$s.avg</td>-->
-                <!--<td>$s.mod</td>-->
-            </tr>
-            #end
-            </tbody>
-        </table>
-
-        <table class="highchart" style="display: none"
+        <table class="highchart" style="visibility: hidden"
                data-graph-container-before="1"
                data-graph-container="highchart-container"
                data-graph-type="column">
@@ -101,6 +78,7 @@
             </tbody>
         </table>
     </div>
+
 </div>
 </body>
 </html>

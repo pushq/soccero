@@ -34,6 +34,18 @@ public class MainApplication implements SparkApplication {
                 res.body(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("public/combobox.js")));
                 return;
             }
+            if (requestURI.equals("/highcharts.js")) {
+                res.body(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("public/highcharts.js")));
+                return;
+            }
+            if (requestURI.equals("/jquery.highchartTable-min.js")) {
+                res.body(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("public/jquery.highchartTable-min.js")));
+                return;
+            }
+            if (requestURI.equals("/favicon.ico")) {
+                res.body("");
+                return;
+            }
 
             if (requestURI.startsWith("/api/")) {
                 return;

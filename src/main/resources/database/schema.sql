@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.13
 -- Dumped by pg_dump version 9.3.1
--- Started on 2015-09-03 20:43:43
+-- Started on 2016-01-19 16:42:58
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 175 (class 3079 OID 11645)
+-- TOC entry 177 (class 3079 OID 11645)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -22,8 +22,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1936 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 1956 (class 0 OID 0)
+-- Dependencies: 177
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -58,6 +58,41 @@ CREATE TABLE game (
 ALTER TABLE public.game OWNER TO postgres;
 
 --
+-- TOC entry 176 (class 1259 OID 32803)
+-- Name: game7_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE game7_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.game7_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 32768)
+-- Name: game7; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE game7 (
+    id integer DEFAULT nextval('game7_id_seq'::regclass) NOT NULL,
+    red1 integer,
+    red2 integer,
+    blue1 integer,
+    blue2 integer,
+    "redScore" integer,
+    "blueScore" integer,
+    date date,
+    CONSTRAINT game7_check CHECK (((((((red1 <> red2) AND (red1 <> blue1)) AND (red1 <> blue2)) AND (red2 <> blue1)) AND (red2 <> blue2)) AND (blue1 <> blue2)))
+);
+
+
+ALTER TABLE public.game7 OWNER TO postgres;
+
+--
 -- TOC entry 163 (class 1259 OID 16405)
 -- Name: game_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
@@ -73,7 +108,7 @@ CREATE SEQUENCE game_id_seq
 ALTER TABLE public.game_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1937 (class 0 OID 0)
+-- TOC entry 1957 (class 0 OID 0)
 -- Dependencies: 163
 -- Name: game_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -188,7 +223,7 @@ CREATE SEQUENCE players_id_seq
 ALTER TABLE public.players_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1938 (class 0 OID 0)
+-- TOC entry 1958 (class 0 OID 0)
 -- Dependencies: 162
 -- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -230,7 +265,7 @@ SELECT player.name, COALESCE(win_view.count, (0)::bigint) AS wins, COALESCE(lose
 ALTER TABLE public.win_stats_view OWNER TO postgres;
 
 --
--- TOC entry 1799 (class 2604 OID 16410)
+-- TOC entry 1805 (class 2604 OID 32805)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -238,7 +273,7 @@ ALTER TABLE ONLY game ALTER COLUMN id SET DEFAULT nextval('game_id_seq'::regclas
 
 
 --
--- TOC entry 1798 (class 2604 OID 16390)
+-- TOC entry 1804 (class 2604 OID 16390)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -246,7 +281,16 @@ ALTER TABLE ONLY player ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::re
 
 
 --
--- TOC entry 1809 (class 2606 OID 16412)
+-- TOC entry 1823 (class 2606 OID 32772)
+-- Name: game7_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY game7
+    ADD CONSTRAINT game7_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1817 (class 2606 OID 16412)
 -- Name: game_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -255,7 +299,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1803 (class 2606 OID 16398)
+-- TOC entry 1811 (class 2606 OID 16398)
 -- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -264,7 +308,7 @@ ALTER TABLE ONLY player
 
 
 --
--- TOC entry 1804 (class 1259 OID 16430)
+-- TOC entry 1812 (class 1259 OID 16430)
 -- Name: fki_IDX_B1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -272,7 +316,7 @@ CREATE INDEX "fki_IDX_B1" ON game USING btree (blue1);
 
 
 --
--- TOC entry 1805 (class 1259 OID 16436)
+-- TOC entry 1813 (class 1259 OID 16436)
 -- Name: fki_IDX_B2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -280,7 +324,39 @@ CREATE INDEX "fki_IDX_B2" ON game USING btree (blue2);
 
 
 --
--- TOC entry 1806 (class 1259 OID 16418)
+-- TOC entry 1818 (class 1259 OID 32783)
+-- Name: fki_IDX_G7_B1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX "fki_IDX_G7_B1" ON game7 USING btree (blue1);
+
+
+--
+-- TOC entry 1819 (class 1259 OID 32789)
+-- Name: fki_IDX_G7_B2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX "fki_IDX_G7_B2" ON game7 USING btree (blue2);
+
+
+--
+-- TOC entry 1820 (class 1259 OID 32795)
+-- Name: fki_IDX_G7_R1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX "fki_IDX_G7_R1" ON game7 USING btree (red1);
+
+
+--
+-- TOC entry 1821 (class 1259 OID 32801)
+-- Name: fki_IDX_G7_R2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX "fki_IDX_G7_R2" ON game7 USING btree (red2);
+
+
+--
+-- TOC entry 1814 (class 1259 OID 16418)
 -- Name: fki_IDX_R1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -288,7 +364,7 @@ CREATE INDEX "fki_IDX_R1" ON game USING btree (red1);
 
 
 --
--- TOC entry 1807 (class 1259 OID 16424)
+-- TOC entry 1815 (class 1259 OID 16424)
 -- Name: fki_IDX_R2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -296,7 +372,7 @@ CREATE INDEX "fki_IDX_R2" ON game USING btree (red2);
 
 
 --
--- TOC entry 1812 (class 2606 OID 16425)
+-- TOC entry 1826 (class 2606 OID 16425)
 -- Name: IDX_B1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -305,7 +381,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1813 (class 2606 OID 16431)
+-- TOC entry 1827 (class 2606 OID 16431)
 -- Name: IDX_B2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -314,7 +390,43 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1810 (class 2606 OID 16413)
+-- TOC entry 1828 (class 2606 OID 32778)
+-- Name: IDX_G7_B1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY game7
+    ADD CONSTRAINT "IDX_G7_B1" FOREIGN KEY (blue1) REFERENCES player(id);
+
+
+--
+-- TOC entry 1829 (class 2606 OID 32784)
+-- Name: IDX_G7_B2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY game7
+    ADD CONSTRAINT "IDX_G7_B2" FOREIGN KEY (blue2) REFERENCES player(id);
+
+
+--
+-- TOC entry 1830 (class 2606 OID 32790)
+-- Name: IDX_G7_R1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY game7
+    ADD CONSTRAINT "IDX_G7_R1" FOREIGN KEY (red1) REFERENCES player(id);
+
+
+--
+-- TOC entry 1831 (class 2606 OID 32796)
+-- Name: IDX_G7_R2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY game7
+    ADD CONSTRAINT "IDX_G7_R2" FOREIGN KEY (red2) REFERENCES player(id);
+
+
+--
+-- TOC entry 1824 (class 2606 OID 16413)
 -- Name: IDX_R1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -323,7 +435,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1811 (class 2606 OID 16419)
+-- TOC entry 1825 (class 2606 OID 16419)
 -- Name: IDX_R2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -332,7 +444,7 @@ ALTER TABLE ONLY game
 
 
 --
--- TOC entry 1935 (class 0 OID 0)
+-- TOC entry 1955 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -343,7 +455,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2015-09-03 20:43:45
+-- Completed on 2016-01-19 16:43:01
 
 --
 -- PostgreSQL database dump complete

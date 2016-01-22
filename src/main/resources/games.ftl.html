@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -12,41 +14,8 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/home">Home</a>
-                    </li>
-                    <li>
-                        <a href="/register">Register Play</a>
-                    </li>
-                    <li>
-                        <a href="/games">Games</a>
-                    </li>
-                    <li>
-                        <a href="/winstats">Wins</a>
-                    </li>
-                    <li>
-                        <a href="/lemstat">LEM (last 30 days)</a>
-                    </li>
-                    <li>
-                        <a href="/lemstatcurrent">LEM (current month)</a>
-                    </li>
-                    <li>
-                        <a href="/lemstatlast">LEM (last month)</a>
-                    </li>
-                    <li>
-                        <a href="/lemstatteam">LEM Team</a>
-                    </li>
-                    <li>
-                        <a href="/matcher">Find Team</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    #include("menu.ftl.html")
+
     <div class="jumbotron">
         <table class="table table-bordered">
             <tbody>
@@ -56,18 +25,18 @@
                 <td colspan="2" >Blue Team</td>
             </tr>
             #foreach( $g in $games )
-            <tr>
-                <td>$g.playerR1</td>
-                <td>$g.playerR2</td>
-                <td>vs.</td>
-                <td>$g.playerB1</td>
-                <td>$g.playerB2</td>
-                <td>$g.redScore</td>
-                <td>:</td>
-                <td>$g.blueScore</td>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>$g.dateString</td>
-            </tr>
+                <tr>
+                    <td>$g.playerR1</td>
+                    <td>$g.playerR2</td>
+                    <td>vs.</td>
+                    <td>$g.playerB1</td>
+                    <td>$g.playerB2</td>
+                    <td>$g.redScore</td>
+                    <td>:</td>
+                    <td>$g.blueScore</td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td>$g.dateString</td>
+                </tr>
             #end
             </tbody>
         </table>

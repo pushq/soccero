@@ -23,7 +23,7 @@ public abstract class AbstractPage {
             Map<String, Object> attributes = new HashMap<>();
             handleGet(req, res, attributes);
             return new ModelAndView(attributes, getHtml());
-        }, MainApplication.FTL);
+        }, MainApplication.VELOCITY);
 
         post(getLocator(), (req, res) -> {
             handlePost(req, res);

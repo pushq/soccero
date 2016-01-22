@@ -13,7 +13,7 @@ import static spark.Spark.before;
 import static spark.Spark.exception;
 
 public class MainApplication implements SparkApplication {
-    public final static VelocityTemplateEngine FTL = new VelocityTemplateEngine();
+    public final static VelocityTemplateEngine VELOCITY = new VelocityTemplateEngine();
     public final static Pages PAGES = new Pages();
     public final static RestEndpoints ENDPOINTS = new RestEndpoints();
     public final static Provider PROVIDER = new Provider();

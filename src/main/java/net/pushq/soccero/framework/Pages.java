@@ -25,6 +25,9 @@ public class Pages {
         pages.add(new LemStatPageLast());
         pages.add(new LemStatChartPage());
         pages.add(new MatcherPage());
+        pages.add(new Games7Page());
+        pages.add(new Register7Page());
+        pages.add(new Lem7Page());
 
         pages.forEach(p -> p.register());
     }

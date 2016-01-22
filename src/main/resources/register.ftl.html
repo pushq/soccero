@@ -15,43 +15,9 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="/home">Home</a>
-                            </li>
-                            <li>
-                                <a href="/register">Register Play</a>
-                            </li>
-                            <li>
-                                <a href="/games">Games</a>
-                            </li>
-                            <li>
-                                <a href="/winstats">Wins</a>
-                            </li>
-                            <li>
-                                <a href="/lemstat">LEM (last 30 days)</a>
-                            </li>
-                            <li>
-                                <a href="/lemstatcurrent">LEM (current month)</a>
-                            </li>
-                            <li>
-                                <a href="/lemstatlast">LEM (last month)</a>
-                            </li>
-                            <li>
-                                <a href="/lemstatteam">LEM Team</a>
-                            </li>
-                            <li>
-                                <a href="/matcher">Find Team</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            #include("menu.ftl.html")
             <div class="jumbotron">
-                <form action="/register" method="post" style="text-align: center; width: 200px;">
+                <form method="post" style="text-align: center; width: 200px;">
                     <table class="table table-bordered">
                         <tbody>
                         <tr>

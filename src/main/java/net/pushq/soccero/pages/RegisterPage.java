@@ -19,6 +19,10 @@ public class RegisterPage extends AbstractPage {
     @Override
     protected void handleGet(Request req, Response res, Map<String, Object> attributes) {
         attributes.put("players", MainApplication.PROVIDER.players());
+        attributes.put("playerRed1", req.queryParams("playerRed1"));
+        attributes.put("playerRed2", req.queryParams("playerRed2"));
+        attributes.put("playerBlue1", req.queryParams("playerBlue1"));
+        attributes.put("playerBlue2", req.queryParams("playerBlue2"));
     }
 
     @Override

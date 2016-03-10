@@ -29,7 +29,11 @@
                                 <select name="playerR1" class="combobox">
                                     <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
-                                    <option value="$p.id">$p.name</option>
+                                        #if ($playerRed1.equals($p.name))
+                                            <option value="$p.id" selected="selected">$p.name</option>
+                                        #else
+                                            <option value="$p.id">$p.name</option>
+                                        #end
                                     #end
                                 </select>
                             </td>
@@ -37,7 +41,11 @@
                                 <select name="playerB1" class="combobox">
                                     <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
-                                    <option value="$p.id">$p.name</option>
+                                        #if ($playerBlue1.equals($p.name))
+                                        <option value="$p.id" selected="selected">$p.name</option>
+                                        #else
+                                        <option value="$p.id">$p.name</option>
+                                        #end
                                     #end
                                 </select>
                             </td>
@@ -47,7 +55,11 @@
                                 <select name="playerR2" class="combobox">
                                     <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
-                                    <option value="$p.id">$p.name</option>
+                                        #if ($playerRed2.equals($p.name))
+                                        <option value="$p.id" selected="selected">$p.name</option>
+                                        #else
+                                        <option value="$p.id">$p.name</option>
+                                        #end
                                     #end
                                 </select>
                             </td>
@@ -55,7 +67,11 @@
                                 <select name="playerB2" class="combobox">
                                     <option value="-1">&nbsp;</option>
                                     #foreach( $p in $players )
-                                    <option value="$p.id">$p.name</option>
+                                        #if ($playerBlue2.equals($p.name))
+                                        <option value="$p.id" selected="selected">$p.name</option>
+                                        #else
+                                        <option value="$p.id">$p.name</option>
+                                        #end
                                     #end
                                 </select>
                             </td>
